@@ -1,0 +1,34 @@
+[tool.pylint.design]
+max-statements = 24
+
+[tool.pylint."messages control"]
+disable = [
+        "missing-module-docstring",
+        "missing-class-docstring",
+        "missing-function-docstring",
+        "invalid-name",
+        "too-few-public-methods",
+        "use-implicit-booleaness-not-len",
+        "line-too-long",
+        "unused-import",
+]
+
+[tool.pylint.typecheck]
+ignored-classes = ["PurePath"]
+
+[tool.coverage.run]
+omit = ["/__main__.py"]
+
+[tool.coverage.report]
+fail_under = 70
+show_missing = true
+
+[tool.ruff]
+select = ["ALL"]
+ignore = [
+          "ANN",      # type annotations
+          "D",        # docstrings
+          "EXE",      # python executables
+          "PT006",    # paramertize-names should be tuple
+          "S101",     # use of assert detected
+]
