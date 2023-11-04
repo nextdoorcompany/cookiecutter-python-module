@@ -1,4 +1,4 @@
-#! {{ cookiecutter.path_to_venv }}/python
+#! {{ cookiecutter.path_to_venv }}/bin/python
 
 
 def main():
