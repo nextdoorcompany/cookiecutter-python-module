@@ -1,3 +1,4 @@
+import subprocess
 from pathlib import Path
 
 DOIT_CONFIG = {
@@ -125,7 +126,25 @@ def task_vulture():
     """Check all Python files for dead code."""
     return {
         "actions": [
-            ["vulture", "."],
+            ["vulture", ".", "vulture_allow.txt"],
         ],
+        "uptodate": [False],
+    }
+
+
+def task_vulture_allow():
+    """Update vulture allow list."""
+
+    def r():
+        p = subprocess.run(
+            ["vulture", ".", "--make-whitelist"],
+            capture_output=True,
+            check=False,
+            text=True,
+        )
+        Path("vulture_allow.txt").write_text(p.stdout)
+
+    return {
+        "actions": [r],
         "uptodate": [False],
     }

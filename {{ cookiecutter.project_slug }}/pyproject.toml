@@ -7,6 +7,7 @@ disable = [
         "missing-module-docstring",
         "too-few-public-methods",
         "too-many-statements",
+        "unspecified-encoding",
         "unused-import",
         "use-implicit-booleaness-not-len",
 ]
@@ -42,4 +43,6 @@ ignore = [
           "PT006",    # paramertize-names should be tuple
           "RUF005",   # collection literal concatenation
           "S101",     # use of assert detected
+          "S603",     # subprocess without shell
+          "S607",     # process with partial executable path
 ]
