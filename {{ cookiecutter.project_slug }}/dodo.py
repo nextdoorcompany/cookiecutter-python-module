@@ -6,7 +6,7 @@ DOIT_CONFIG = {
         "lint",
         "mypy",
         "ruff",
-        #        "test",
+        "test",
         #        "coverage_with_fail_under",
         "vulture",
     ],
@@ -17,6 +17,9 @@ DOIT_CONFIG = {
 cwd = Path()
 test_files = list(cwd.glob("test*.py"))
 python_files = list(cwd.glob("*.py"))
+
+# add any files with doctests to test_files
+test_files = test_files + []
 
 
 def task_format():
@@ -77,6 +80,16 @@ def task_ruff_fix_imports():
     }
 
 
+def task_test():
+    """Run pytest on all test files."""
+    for f in test_files:
+        yield {
+            "name": f.name,
+            "actions": [["pytest", "--doctest-modules", f]],
+            "file_dep": [f],
+        }
+
+
 def task_vulture():
     """Check all Python files for dead code."""
     return {
@@ -85,16 +98,6 @@ def task_vulture():
         ],
         "uptodate": [False],
     }
-
-
-# def task_test():
-#     "Runs pytest on all test files."
-#     for f in test_files:
-#         yield {
-#             "name": f.name,
-#             "actions": [["{{ cookiecutter.path_to_venv }}/bin/python", "-m", "pytest", f]],
-#             "file_dep": [f],
-#         }
 
 
 # def task_coverage():
