@@ -40,5 +40,6 @@ ignore = [
           "E501",     # line too long
           "ISC001",   # implicit string concatenation on one line
           "PT006",    # paramertize-names should be tuple
+          "RUF005",   # collection literal concatenation
           "S101",     # use of assert detected
 ]
