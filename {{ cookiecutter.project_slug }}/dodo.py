@@ -7,7 +7,7 @@ DOIT_CONFIG = {
         "mypy",
         "ruff",
         "test",
-        #        "coverage_with_fail_under",
+        "coverage_with_fail_under",
         "vulture",
     ],
     "continue": True,
@@ -20,6 +20,7 @@ python_files = list(cwd.glob("*.py"))
 
 # add any files with doctests to test_files
 test_files = test_files + []
+test_files_as_txt = " ".join([t.name for t in test_files])
 
 
 def task_format():
@@ -100,24 +101,31 @@ def task_vulture():
     }
 
 
-# def task_coverage():
-#     "Runs coverage over pytest on the test directory."
-#     return {
-#         "actions": [
-#             ["{{ cookiecutter.path_to_venv }}/bin/coverage", "run", "-m", "pytest", "."],
-#             ["{{ cookiecutter.path_to_venv }}/bin/coverage", "report"],
-#         ],
-#         "uptodate": [False],
-#         "verbosity": 2,
-#     }
+COVERAGE_ACTIONS = [
+    [
+        "coverage",
+        "run",
+        "--branch",
+        "-m",
+        "pytest",
+        test_files_as_txt,
+    ],
+    ["coverage", "report"],
+]
 
 
-# def task_coverage_with_fail_under():
-#     "Runs coverage over pytest on the test directory with no output unless coverage is below threshold."
-#     return {
-#         "actions": [
-#             ["{{ cookiecutter.path_to_venv }}/bin/coverage", "run", "-m", "pytest", "."],
-#             ["{{ cookiecutter.path_to_venv }}/bin/coverage", "report"],
-#         ],
-#         "uptodate": [False],
-#     }
+def task_coverage():
+    """Run coverage over pytest."""
+    return {
+        "actions": COVERAGE_ACTIONS,
+        "uptodate": [False],
+        "verbosity": 2,
+    }
+
+
+def task_coverage_with_fail_under():
+    """Run coverage over pytest output only if coverage is below threshold."""
+    return {
+        "actions": COVERAGE_ACTIONS,
+        "uptodate": [False],
+    }
