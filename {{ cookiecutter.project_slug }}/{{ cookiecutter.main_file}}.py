@@ -2,7 +2,7 @@
 
 
 def main():
-    print("hello world")
+    print("hello world")  # noqa: T201
 
 
 if __name__ == "__main__":
