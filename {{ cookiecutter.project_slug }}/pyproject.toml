@@ -25,6 +25,7 @@ show_missing = true
 select = ["ALL"]
 ignore = [
           "ANN",      # type annotations
+          "COM812",   # missing trailing comma
           "D100",     # undocumented module
           "D101",     # undocumented class
           "D102",     # undocumented method
@@ -36,6 +37,7 @@ ignore = [
           "D203",     # one blank line before class
           "D213",     # multi-line summary second line
           "E501",     # line too long
+          "ISC001",   # implicit string concatenation on one line
           "PT006",    # paramertize-names should be tuple
           "S101",     # use of assert detected
 ]

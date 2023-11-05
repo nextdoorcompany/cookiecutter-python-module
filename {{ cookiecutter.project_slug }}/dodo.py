@@ -2,6 +2,7 @@ from pathlib import Path
 
 DOIT_CONFIG = {
     "default_tasks": [
+        "format",
         "lint",
         #        "mypy",
         #        "test",
@@ -16,6 +17,16 @@ DOIT_CONFIG = {
 cwd = Path()
 test_files = list(cwd.glob("test*.py"))
 python_files = list(cwd.glob("*.py"))
+
+
+def task_format():
+    """Format all Python files."""
+    return {
+        "actions": [
+            ["ruff", "format", "--check", "."],
+        ],
+        "uptodate": [False],
+    }
 
 
 def task_lint():
