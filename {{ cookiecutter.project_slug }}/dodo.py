@@ -4,11 +4,11 @@ DOIT_CONFIG = {
     "default_tasks": [
         "format",
         "lint",
-        #        "mypy",
-        #        "test",
+        "mypy",
         "ruff",
+        #        "test",
         #        "coverage_with_fail_under",
-        #        "vulture",
+        "vulture",
     ],
     "continue": True,
 }
@@ -47,6 +47,16 @@ def task_lint():
         }
 
 
+def task_mypy():
+    """Type check all Python files."""
+    return {
+        "actions": [
+            ["mypy", "."],
+        ],
+        "uptodate": [False],
+    }
+
+
 def task_ruff():
     """Run ruff on all Python files."""
     return {
@@ -62,6 +72,16 @@ def task_ruff_fix_imports():
     return {
         "actions": [
             ["ruff", "check", "--fix", "--select", "I001", "."],
+        ],
+        "uptodate": [False],
+    }
+
+
+def task_vulture():
+    """Check all Python files for dead code."""
+    return {
+        "actions": [
+            ["vulture", "."],
         ],
         "uptodate": [False],
     }
@@ -95,16 +115,6 @@ def task_ruff_fix_imports():
 #         "actions": [
 #             ["{{ cookiecutter.path_to_venv }}/bin/coverage", "run", "-m", "pytest", "."],
 #             ["{{ cookiecutter.path_to_venv }}/bin/coverage", "report"],
-#         ],
-#         "uptodate": [False],
-#     }
-
-
-# def task_vulture():
-#     "Runs vulture on the source directory."
-#     return {
-#         "actions": [
-#             ["{{ cookiecutter.path_to_venv }}/bin/vulture", "."],
 #         ],
 #         "uptodate": [False],
 #     }
