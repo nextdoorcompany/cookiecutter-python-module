@@ -1,6 +1,5 @@
 from pathlib import Path
 
-
 DOIT_CONFIG = {
     "default_tasks": [
         #        "lint",
@@ -14,7 +13,7 @@ DOIT_CONFIG = {
 }
 
 
-cwd = Path(".")
+cwd = Path()
 test_files = list(cwd.glob("test*.py"))
 python_files = list(cwd.glob("*.py"))
 
