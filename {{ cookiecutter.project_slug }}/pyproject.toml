@@ -15,10 +15,10 @@ disable = [
 [tool.pylint.typecheck]
 ignored-classes = ["PurePath"]
 
-[tool.coverage.run]
-omit = ["/__main__.py"]
-
 [tool.coverage.report]
+exclude_also = [
+"if __name__ == .__main__.:"
+]
 fail_under = 70
 show_missing = true
 
