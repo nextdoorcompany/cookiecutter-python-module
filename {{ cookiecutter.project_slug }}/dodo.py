@@ -2,7 +2,7 @@ from pathlib import Path
 
 DOIT_CONFIG = {
     "default_tasks": [
-        #        "lint",
+        "lint",
         #        "mypy",
         #        "test",
         "ruff",
@@ -18,24 +18,32 @@ test_files = list(cwd.glob("test*.py"))
 python_files = list(cwd.glob("*.py"))
 
 
-# def task_lint():
-#     "Runs pylint on all Python files."
-#     for f in python_files:
-#         yield {
-#             "name": f.name,
-#             "actions": [
-#                 [
-#                     "{{ cookiecutter.path_to_venv }}/bin/python",
-#                     "-m",
-#                     "pylint",
-#                     "--output-format=parseable",
-#                     "--rcfile",
-#                     "pyproject.toml",
-#                     f,
-#                 ]
-#             ],
-#             "file_dep": [f],
-#         }
+def task_lint():
+    """Run pylint on all Python files."""
+    for f in python_files:
+        yield {
+            "name": f.name,
+            "actions": [
+                [
+                    "pylint",
+                    "--output-format=parseable",
+                    "--rcfile",
+                    "pyproject.toml",
+                    f,
+                ],
+            ],
+            "file_dep": [f],
+        }
+
+
+def task_ruff():
+    """Run ruff on all Python files."""
+    return {
+        "actions": [
+            ["ruff", "check", "."],
+        ],
+        "uptodate": [False],
+    }
 
 
 # def task_test():
@@ -79,16 +87,6 @@ python_files = list(cwd.glob("*.py"))
 #         ],
 #         "uptodate": [False],
 #     }
-
-
-def task_ruff():
-    "Runs ruff on all Python files."
-    return {
-        "actions": [
-            ["ruff", "check", "."],
-        ],
-        "uptodate": [False],
-    }
 
 
 # def task_ruff_fix_imports():

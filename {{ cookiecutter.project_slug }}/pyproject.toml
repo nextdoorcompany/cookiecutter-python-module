@@ -1,16 +1,14 @@
-[tool.pylint.design]
-max-statements = 24
-
 [tool.pylint."messages control"]
 disable = [
-        "missing-module-docstring",
+        "invalid-name",
+        "line-too-long",
         "missing-class-docstring",
         "missing-function-docstring",
-        "invalid-name",
+        "missing-module-docstring",
         "too-few-public-methods",
-        "use-implicit-booleaness-not-len",
-        "line-too-long",
+        "too-many-statements",
         "unused-import",
+        "use-implicit-booleaness-not-len",
 ]
 
 [tool.pylint.typecheck]
@@ -35,6 +33,8 @@ ignore = [
           "D105",     # undocumented magic method
           "D106",     # undocumented nested class
           "D107",     # undocumented init
+          "D203",     # one blank line before class
+          "D213",     # multi-line summary second line
           "E501",     # line too long
           "PT006",    # paramertize-names should be tuple
           "S101",     # use of assert detected
