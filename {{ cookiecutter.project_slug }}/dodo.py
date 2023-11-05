@@ -91,16 +91,6 @@ def task_test():
         }
 
 
-def task_vulture():
-    """Check all Python files for dead code."""
-    return {
-        "actions": [
-            ["vulture", "."],
-        ],
-        "uptodate": [False],
-    }
-
-
 COVERAGE_ACTIONS = [
     [
         "coverage",
@@ -127,5 +117,15 @@ def task_coverage_with_fail_under():
     """Run coverage over pytest output only if coverage is below threshold."""
     return {
         "actions": COVERAGE_ACTIONS,
+        "uptodate": [False],
+    }
+
+
+def task_vulture():
+    """Check all Python files for dead code."""
+    return {
+        "actions": [
+            ["vulture", "."],
+        ],
         "uptodate": [False],
     }
