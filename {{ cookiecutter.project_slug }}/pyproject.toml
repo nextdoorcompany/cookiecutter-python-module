@@ -27,8 +27,15 @@ show_missing = true
 select = ["ALL"]
 ignore = [
           "ANN",      # type annotations
-          "D",        # docstrings
-          "EXE",      # python executables
+          "D100",     # undocumented module
+          "D101",     # undocumented class
+          "D102",     # undocumented method
+          "D103",     # undocumented function
+          "D104",     # undocumented package
+          "D105",     # undocumented magic method
+          "D106",     # undocumented nested class
+          "D107",     # undocumented init
+          "E501",     # line too long
           "PT006",    # paramertize-names should be tuple
           "S101",     # use of assert detected
 ]
