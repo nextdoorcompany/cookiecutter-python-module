@@ -39,9 +39,14 @@ ignore = [
           "D203",     # one blank line before class
           "D213",     # multi-line summary second line
           "E501",     # line too long
+          "FBT001",   # boolean positional value positional arg
+          "FBT002",   # boolean positional value positional arg
+          "FBT003",   # boolean positional value in call
           "ISC001",   # implicit string concatenation on one line
+          "PLR2004",  # magic value in a comparison
           "PT006",    # paramertize-names should be tuple
           "RUF005",   # collection literal concatenation
+          "RUF007",   # prefer itertools.pairwise
           "S101",     # use of assert detected
           "S603",     # subprocess without shell
           "S607",     # process with partial executable path
