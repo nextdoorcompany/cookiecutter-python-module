@@ -8,6 +8,7 @@ DOIT_CONFIG = {
         "mypy",
         "ruff",
         "test",
+        "toml_lint",
         "coverage_with_fail_under",
         "vulture",
     ],
@@ -18,6 +19,7 @@ DOIT_CONFIG = {
 cwd = Path()
 test_files = list(cwd.glob("test*.py"))
 python_files = list(cwd.glob("*.py"))
+toml_files = list(cwd.glob("*.toml"))
 
 # add any files with doctests to test_files
 test_files = test_files + []
@@ -120,6 +122,25 @@ def task_coverage_with_fail_under():
         "actions": COVERAGE_ACTIONS,
         "uptodate": [False],
     }
+
+
+def task_toml_lint():
+    """Run toml-sort on all toml files."""
+    for f in toml_files:
+        yield {
+            "name": f.name,
+            "actions": [
+                [
+                    "toml-sort",
+                    "--spaces-indent-inline-array",
+                    "4",
+                    "--trailing-comma-inline-array",
+                    "--check",
+                    f,
+                ]
+            ],
+            "file_dep": [f],
+        }
 
 
 def task_vulture():
