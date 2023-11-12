@@ -1,4 +1,5 @@
 # run with . eshell-activate
-addpath -b {{ cookiecutter.path_to_venv }}/bin
-(setq-local eshell-venv-prompt "({{ cookiecutter.project_slug }}) ")
+addpath -b {{ cookiecutter.path_to_venv }}/bin > /dev/null
+(setq-local eshell-venv-prompt "({{ cookiecutter.project_slug }}) ") > /dev/null
+echo "Virtual environment activated.  Current Python:"
 which python
