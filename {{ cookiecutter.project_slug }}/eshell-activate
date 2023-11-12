@@ -1,4 +1,4 @@
 # run with . eshell-activate
 addpath -b {{ cookiecutter.path_to_venv }}/bin
-(setq-local js/venv (propertize "({{ cookiecutter.project_slug }}) " 'face '(:foreground "violet")))
+(setq-local eshell-venv-prompt "({{ cookiecutter.project_slug }}) ")
 which python
