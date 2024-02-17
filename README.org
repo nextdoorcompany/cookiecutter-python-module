@@ -19,3 +19,28 @@ cookiecutter gh:nextdoorcompany/cookiecutter-python-module
 
 ** Emacs
 Generated [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html][.dir-locals.el]] file sets ~python-shell-virtual-root~ so ~C-c C-p~ opens a REPL in the virtual environment.  In addition, ~compile-command~ is set to use doit for linting and testing and ~M-x pdb~ will default to the main program entry point.
+
+Use ~. eshell-activate~ to activate the virtual environment in eshell.
+
+** Other
+Use ~./*main_file*~ in an active virtual environment to run.  See ~dodo list~ for linting and testing.
+
+If not using an externally managed "batteries included" virtual environment, place dependencies in the ~dependencies~ key of the ~[project]~ table.  
+
+uv looks for an activated virtual environment in the path stored in ~VIRTUAL_ENV~ environment variable or from a ~.venv~ directory.
+
+#+BEGIN_SRC shell
+uv venv --python 3.12 # searches for a python3.12 binary in the PATH
+# creates .venv in current directory
+#+END_SRC
+
+#+BEGIN_SRC shell
+uv pip compile pyproject.toml \
+--generate-hashes \
+--upgrade \ # upgrades all packages
+--upgrade-package <PKG> \
+--output-file requirements.txt
+
+uv pip sync requirements.txt
+#+END_SRC
+
