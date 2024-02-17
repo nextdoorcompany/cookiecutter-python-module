@@ -1,3 +1,9 @@
+# https://packaging.python.org/en/latest/specifications/pyproject-toml/#pyproject-toml-spec
+
+[project]
+name = "{{ cookiecutter.project_slug }}"
+dependencies = []
+
 [tool.coverage.report]
 exclude_also = [
     "if __name__ == .__main__.:",
