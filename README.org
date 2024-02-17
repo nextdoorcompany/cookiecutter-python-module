@@ -23,7 +23,7 @@ Generated [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-
 Use ~. eshell-activate~ to activate the virtual environment in eshell.
 
 ** Other
-Use ~./*main_file*~ in an active virtual environment to run.  See ~dodo list~ for linting and testing.
+Use ~./<main_file>~ in an active virtual environment to run.  See ~dodo list~ for linting and testing.
 
 If not using an externally managed "batteries included" virtual environment, place dependencies in the ~dependencies~ key of the ~[project]~ table.  
 
