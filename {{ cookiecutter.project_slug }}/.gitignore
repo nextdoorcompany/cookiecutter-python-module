@@ -1,0 +1,6 @@
+.coverage
+.doit.db
+.mypy_cache
+.pytest_cache
+.ruff_cache
+__pycache__/
