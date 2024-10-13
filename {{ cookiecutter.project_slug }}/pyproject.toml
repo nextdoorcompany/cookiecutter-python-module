@@ -15,6 +15,9 @@ exclude_also = [
 fail_under = 70
 show_missing = true
 
+[tool.mypy]
+python_executable = ".venv/bin/python"
+
 [tool.pylint."messages control"]
 disable = [
     "invalid-name",
