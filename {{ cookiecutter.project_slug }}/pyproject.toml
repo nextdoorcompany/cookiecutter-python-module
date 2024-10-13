@@ -33,7 +33,7 @@ disable = [
 ignored-classes = ["PurePath"]
 
 [tool.ruff]
-target-version = "py312"
+target-version = "py313"
 
 [tool.ruff.lint]
 select = ["ALL"]
