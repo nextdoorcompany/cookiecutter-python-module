@@ -90,7 +90,7 @@ def task_test():
     for f in test_files:
         yield {
             "name": f.name,
-            "actions": [[venv_bin + "pytest", "--doctest-modules", f]],
+            "actions": [[venv_bin + "pytest", "--doctest-modules", "--color=yes", f]],
             "file_dep": [f],
         }
 
