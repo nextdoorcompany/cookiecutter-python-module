@@ -1,5 +1,5 @@
 {
     "project_slug": "my-project",
-    "path_to_venv": "/path/to/venv",
+    "path_to_venv": ".venv",
     "main_file": "proj"
 }
