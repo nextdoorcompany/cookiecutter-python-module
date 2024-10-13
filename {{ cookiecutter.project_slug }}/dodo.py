@@ -20,6 +20,7 @@ cwd = Path()
 test_files = list(cwd.glob("test*.py"))
 python_files = list(cwd.glob("*.py"))
 toml_files = list(cwd.glob("*.toml"))
+venv_bin = "{{ cookiecutter.path_to_venv }}/bin/"
 
 # add any files with doctests to test_files
 test_files = test_files + []
@@ -89,14 +90,14 @@ def task_test():
     for f in test_files:
         yield {
             "name": f.name,
-            "actions": [["pytest", "--doctest-modules", f]],
+            "actions": [[venv_bin + "pytest", "--doctest-modules", f]],
             "file_dep": [f],
         }
 
 
 COVERAGE_ACTIONS = [
     [
-        "coverage",
+        venv_bin + "coverage",
         "run",
         "--branch",
         "-m",

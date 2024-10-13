@@ -2,7 +2,11 @@
 
 [project]
 name = "{{ cookiecutter.project_slug }}"
-dependencies = []
+dependencies = [
+    "coverage",
+    "pytest",
+    "pytest-icdiff",
+]
 
 [tool.coverage.report]
 exclude_also = [
