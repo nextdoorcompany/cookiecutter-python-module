@@ -65,4 +65,4 @@ ignore = [
 ]
 
 [tool.vulture]
-exclude = ["dodo.py"]
+exclude = ["dodo.py", "*/.venv/*.py"]
