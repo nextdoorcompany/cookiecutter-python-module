@@ -16,7 +16,7 @@ fail_under = 70
 show_missing = true
 
 [tool.mypy]
-python_executable = ".venv/bin/python"
+python_executable = "{{ cookiecutter.path_to_venv }}/bin/python"
 
 [tool.pylint."messages control"]
 disable = [
@@ -63,6 +63,7 @@ ignore = [
     "RUF005", # collection literal concatenation
     "RUF007", # prefer itertools.pairwise
     "S101", # use of assert detected
+    "S108", # use of temp dir
     "S603", # subprocess without shell
     "S607", # process with partial executable path
 ]
