@@ -170,3 +170,61 @@ def task_vulture_allow():
         "actions": [r],
         "uptodate": [False],
     }
+
+
+def task_compile():
+    """Generate requirements.txt file."""
+    return {
+        "actions": [
+            [
+                "uv",
+                "pip",
+                "compile",
+                "pyproject.toml",
+                "--python",
+                venv_bin + "python",
+                "--generate-hashes",
+                "--output-file",
+                "requirements.txt",
+            ],
+        ],
+        "uptodate": [False],
+    }
+
+
+def task_compile_with_upgrade():
+    """Generate requirements.txt file with updated deps."""
+    return {
+        "actions": [
+            [
+                "uv",
+                "pip",
+                "compile",
+                "pyproject.toml",
+                "--python",
+                venv_bin + "python",
+                "--generate-hashes",
+                "--upgrade",
+                "--output-file",
+                "requirements.txt",
+            ],
+        ],
+        "uptodate": [False],
+    }
+
+
+def task_sync():
+    """Sync venv with requirements.txt."""
+    return {
+        "actions": [
+            [
+                "uv",
+                "pip",
+                "sync",
+                "--python",
+                venv_bin + "python",
+                "requirements.txt",
+            ],
+        ],
+        "uptodate": [False],
+    }
