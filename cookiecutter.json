@@ -1,5 +1,6 @@
 {
     "project_slug": "my-project",
     "path_to_venv": ".venv",
+    "python_minor_version": "13"
     "main_file": "proj"
 }
