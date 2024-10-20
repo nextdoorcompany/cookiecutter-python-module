@@ -15,6 +15,7 @@ cookiecutter gh:nextdoorcompany/cookiecutter-python-module
 ** Variables
 + *project_slug* - name of project directory to create
 + *path_to_venv* - location of virtual environment directory - bin is a subdirectory of this folder
++ *python_minor_version* - version of Python 3 to run
 + *main_file* - default first Python file in package
 
 ** Emacs
@@ -25,22 +26,6 @@ Use ~. eshell-activate~ to activate the virtual environment in eshell.
 ** Other
 Use ~./<MAIN_FILE>~ in an active virtual environment to run.  See ~dodo list~ for linting and testing.
 
-If not using an externally managed "batteries included" virtual environment, place dependencies in the ~dependencies~ key of the ~[project]~ table of ~pyproject.toml~.
+Place dependencies in the ~dependencies~ key of the ~[project]~ table of ~pyproject.toml~.
 
-[[https://github.com/astral-sh/uv][uv]] looks for an activated virtual environment in the path stored in ~VIRTUAL_ENV~ environment variable or from a ~.venv~ directory.
-
-#+BEGIN_SRC shell
-uv venv --python 3.12 # searches for a python3.12 binary in the PATH
-# creates .venv in current directory
-#+END_SRC
-
-#+BEGIN_SRC shell
-uv pip compile pyproject.toml \
---generate-hashes \
---upgrade \ # upgrades all packages
---upgrade-package <PKG> \
---output-file requirements.txt
-
-uv pip sync requirements.txt
-#+END_SRC
-
+Uses [[https://github.com/astral-sh/uv][uv]] to manage virtual environment.
