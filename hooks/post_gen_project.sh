@@ -11,3 +11,5 @@ doit list
 echo
 echo run ./{{ cookiecutter.main_file }}.py
 echo
+echo . eshell-activate
+echo
