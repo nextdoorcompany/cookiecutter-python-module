@@ -18,6 +18,13 @@ show_missing = true
 [tool.mypy]
 python_executable = "{{ cookiecutter.path_to_venv }}/bin/python"
 
+[tool.pylint.main]
+init-hook = """
+import sys
+from pathlib import Path
+sys.path.append(str(next(Path('{{ cookiecutter.path_to_venv }}').glob('lib/*/site-packages'))))
+"""
+
 [tool.pylint."messages control"]
 disable = [
     "invalid-name",
