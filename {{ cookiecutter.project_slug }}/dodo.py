@@ -230,3 +230,19 @@ def task_sync():
         ],
         "uptodate": [False],
     }
+
+
+def task_rebuild_venv():
+    """Build new virtual environment.  Overwrites existing."""
+    return {
+        "actions": ["uv venv --python 3.%(python_minor)s {{ cookiecutter.path_to_venv }}"],
+        "params": [
+            {
+                "name": "python_minor",
+                "long": "minor",
+                "default": {{ cookiecutter.python_minor_version }},
+                "help": "Python minor version",
+            }
+        ],
+        "uptodate": [False],
+    }
