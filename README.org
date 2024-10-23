@@ -3,7 +3,7 @@ A [[https://github.com/cookiecutter/cookiecutter][cookiecutter]] template for a 
 
 + [[https://pydoit.org/][doit]] for task running
 + [[https://github.com/PyCQA/pylint][pylint]] and [[https://github.com/charliermarsh/ruff][ruff]] for linting
-+ [[https://github.com/pytest-dev/pytest/][pytest]] and [[https://github.com/nedbat/coveragepy][coverage]] for testing
++ [[https://github.com/pytest-dev/pytest/][pytest]] with [[https://github.com/hjwp/pytest-icdiff][pytest-icdiff]] plug-in and [[https://github.com/nedbat/coveragepy][coverage]] for testing
 + [[https://github.com/charliermarsh/ruff][ruff]] for formatting
 + [[https://github.com/jendrikseipp/vulture][vulture]] for dead code discovery
 
@@ -24,8 +24,8 @@ Generated [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-
 Use ~. eshell-activate~ to activate the virtual environment in eshell.
 
 ** Other
-Use ~./<MAIN_FILE>~ in an active virtual environment to run.  See ~dodo list~ for linting and testing.
+Use ~./<MAIN_FILE>~ to run.  See ~dodo list~ for linting and testing.
 
 Place dependencies in the ~dependencies~ key of the ~[project]~ table of ~pyproject.toml~.
 
-Uses [[https://github.com/astral-sh/uv][uv]] to manage virtual environment.
+Uses [[https://github.com/astral-sh/uv][uv]] to manage virtual environment.  Expects doit, pylint, ruff, uv, and vulture installed outside of the virtual environment.
