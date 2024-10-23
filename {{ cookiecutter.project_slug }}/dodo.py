@@ -235,7 +235,11 @@ def task_sync():
 def task_rebuild_venv():
     """Build new virtual environment.  Overwrites existing."""
     return {
-        "actions": ["uv venv --python 3.%(python_minor)s {{ cookiecutter.path_to_venv }}"],
+        "actions": [
+            "uv venv --python 3.%(python_minor)s {{ cookiecutter.path_to_venv }}",
+            "sed --in-place=.bak s/py3[0-9][0-9]/py3%(python_minor)s/ pyproject.toml",
+            "diff -u pyproject.toml.bak pyproject.toml || :",
+        ],
         "params": [
             {
                 "name": "python_minor",
@@ -245,4 +249,5 @@ def task_rebuild_venv():
             }
         ],
         "uptodate": [False],
+        "verbosity": 2,
     }
